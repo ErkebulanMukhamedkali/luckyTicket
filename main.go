@@ -2,26 +2,13 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 func main() {
 	tickets := make([]string, 1000000)
 	for i := 0; i < 1000000; i++ {
-		temp := strconv.Itoa(i)
-
-		zeros := ""
-		for i := 0; i < 6-len(temp); i++ {
-			zeros += "0"
-		}
-
-		if len(temp) < 6 {
-			temp = fmt.Sprintf("%s%s", zeros, temp)
-		}
-		tickets[i] = temp
+		tickets[i] = fmt.Sprintf("%06d", i)
 	}
-
-	fmt.Println(tickets[:100])
 
 	count := 0
 	for _, v := range tickets {
